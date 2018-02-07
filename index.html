@@ -1,0 +1,125 @@
+<!DOCKTYPE html>
+<html lang=en>
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="shortcut icon" href="https://www.geder.org/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>GEDER Status</title>
+  </head>
+	<body>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+		<script>
+			function checkPassword() {
+				var x = document.getElementById("password");
+				var randomNum = Math.floor(Math.random() * 20);
+				if (x.value === "1") {
+					document.getElementById("toggleModal").click();
+					password.value = "";
+					serverRefresh.value = "1";
+					document.getElementById("serverRefresh").innerHTML = randomNum;
+				} else {
+					password.classList.add("is-invalid");
+					password.select();
+				}
+			}
+
+			function removeError() {
+				password.classList.remove("is-invalid");
+			}
+		</script>
+		<style>
+			body {
+				background-color: #33A1DE;
+				color: white;
+				font-family: 'Open Sans', sans-serif;
+			}
+			h1 {
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+			.logo-img {
+				margin-top: 30px;
+			}
+			.black-text {
+				color: black;
+			}
+			.white-header {
+				background-color: white;
+			}
+			.fixed-top {
+				margin-bottom: 15px;
+			}
+			.form {
+				margin-top: 110px;
+			}
+			.title-text {
+				margin-bottom: 30px;
+			}
+		</style>
+		<div class="container">
+			
+			<nav class="navbar fixed-top navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">
+					<img src="https://i.imgur.com/lNybKf4.png" width="35" height="35" class="d-inline-block align-top" alt="">
+					<span class="navbar-brand mb-0 h1">Geder Filter Status</span>
+				</a>
+			</nav>
+			
+			<div class="row">
+				<div class="col-lg-4 offset-lg-4">
+				
+					<form>
+						<div class="form-group form">
+							<div class="title-text"><p class="lead text-center">Please login to view filter status</p></div>
+							<label for="userId">User ID:</label>
+							<input type="text" class="form-control" id="userId" value="85961" disabled>
+							<small id="userIdHelp" class="form-text">Autofilled by IP address</small>
+						</div>
+						<div class="form-group">
+							<label for="password">Password:</label>
+							<input type="password" class="form-control" id="password" onkeypress="removeError()">
+							<p class="invalid-feedback">
+								Wrong password
+							</p>
+						</div>
+						<button type="button" class="btn btn-primary" onclick="checkPassword()">Check status</button>
+						<button type="button" id="toggleModal" data-toggle="modal" data-target="#modalId" hidden="hidden"></button>
+
+					</form>
+				</div>
+				
+				<div class="modal fade black-text" id="modalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Geder filter status...</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="checkPassword()">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h2 class="text-success text-center">Filter is active!</h2>
+								<ul class="list-group">
+									<li class="list-group-item"><strong>ID: </strong>85961</li>
+									<li class="list-group-item"><strong>Device type:  </strong>Mobile</li>
+									<li class="list-group-item"><strong>Filter Status: </strong><span class="text-success">Enabled</span></li>
+									<li class="list-group-item"><strong>Filter Level: </strong><span class="text-success">Strong</span></li>
+									<li class="list-group-item"><strong>Verified: </strong><span id="serverRefresh"></span> seconds ago</li>
+									<li class="list-group-item"><strong>Errors?  </strong>N/A</li>
+								</ul>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+</html>
